@@ -1,3 +1,6 @@
 module.exports = {
-    MovieRepository: require("../repository/movie-repository")
+    MovieRepository: require("./movie-repository"),
+    TheaterRepository: require("./theater-repository"),
+    LanguageRepository: require("./language-repository"),
+    CrudRepository: require("./crud-repository")
 }

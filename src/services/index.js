@@ -1,3 +1,4 @@
 module.exports = {
-    MovieService: require("../services/movie-service")
+    MovieService: require("./movie-service"),
+    CrudRepository: require("./crud-service")
 }
