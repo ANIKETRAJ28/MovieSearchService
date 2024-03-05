@@ -11,10 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsToMany(models.Movie, {
-        through: "movieTheater",
-        as: "movie_theater"
-      });
+      this.hasMany(models.Theater);
+      this.hasMany(models.Language);
     }
   }
   Movie.init({
