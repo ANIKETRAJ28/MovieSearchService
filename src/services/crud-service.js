@@ -1,6 +1,6 @@
 class CrudService {
     constructor(repository) {
-        this.repository = new repository();
+        this.repository = repository;
     }
 
     async create(data) {

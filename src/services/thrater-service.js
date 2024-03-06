@@ -1,10 +1,10 @@
 const { TheaterRepository } = require("../repository/index");
-const { CrudService } = require("./crud-service");
+const CrudService = require("./crud-service");
 
 class TheaterService extends CrudService {
     constructor() {
-        this.theaterRepository = new TheaterRepository();
-        super(this.theaterRepository);
+        const theaterRepository = new TheaterRepository();
+        super(theaterRepository);
     }
 }
 
