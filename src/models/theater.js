@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsToMany(models.Movie, {
         through: "MovieTheater",
         as: "movie",
-        foreignKey: "theaterId"
+        foreignKey: "theaterId",
+        onDelete: "CASCADE"
       });
     }
   }

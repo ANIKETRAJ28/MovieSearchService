@@ -14,12 +14,14 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsToMany(models.Theater, {
         through: "MovieTheater",
         as: "theater",
-        foreignKey: "movieId"
+        foreignKey: "movieId",
+        onDelete: "CASCADE"
       });
       this.belongsToMany(models.Language, {
         through: "MovieLanguage",
         as: "language",
-        foreignKey: "movieId"
+        foreignKey: "movieId",
+        onDelete: "CASCADE"
       });
     }
   }
