@@ -16,6 +16,11 @@ module.exports = (sequelize, DataTypes) => {
         as: "theater",
         foreignKey: "movieId"
       });
+      this.belongsToMany(models.Language, {
+        through: "MovieLanguage",
+        as: "language",
+        foreignKey: "movieId"
+      });
     }
   }
   Movie.init({
