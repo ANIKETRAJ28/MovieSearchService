@@ -3,6 +3,16 @@ class CrudRepository {
         this.model = model;
     }
 
+    async getAll() {
+        try {
+            const response = await this.model.findAll();
+            return response;
+        } catch (error) {
+            console.log("Something went wrong in crud repo");
+            throw error;
+        }
+    }
+
     async get(id) {
         try {
             const response = await this.model.findByPk(id);

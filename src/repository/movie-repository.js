@@ -1,4 +1,4 @@
-const { Movie, Theater } = require("../models/index");
+const { Movie, Theater, Language } = require("../models/index");
 const CrudRepository = require("./crud-repository");
 
 class MovieRepository extends CrudRepository {
@@ -13,6 +13,10 @@ class MovieRepository extends CrudRepository {
                     {
                         model: Theater,
                         as: "theater"
+                    },
+                    {
+                        model: Language,
+                        as: "language"
                     }
                 ]
             });

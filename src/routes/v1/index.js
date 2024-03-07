@@ -4,6 +4,7 @@ const { languageController, movieController, theaterController } = require("../.
 
 router.post("/movies", movieController.create);
 router.get("/movies/:id", movieController.get);
+router.get("/movies", movieController.getAll);
 router.delete("/movies/:id", movieController.destroy);
 router.patch("/movies/:id", movieController.update);
 
@@ -14,6 +15,7 @@ router.patch("/languages/:id", languageController.update);
 
 router.post("/theaters", theaterController.create);
 router.get("/theaters/:id", theaterController.get);
+router.get("/theaters", theaterController.getAll);
 router.delete("/theaters/:id", theaterController.destroy);
 router.patch("/theaters/:id", theaterController.update);
 

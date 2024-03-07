@@ -2,6 +2,26 @@ const { TheaterService } = require("../services/index");
 
 const theaterService = new TheaterService();
 
+const getAll = async (req, res) => {
+    try {
+        const response = await theaterService.getAll();
+        return res.status(201).json({
+            data: response,
+            message: "Successfully fetched theaters",
+            success: true,
+            err: {}
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            message: "Failed to fetch theaters",
+            success: false,
+            err: error
+        });
+    }
+}
+
 const get = async (req, res) => {
     try {
         const response = await theaterService.get(req.params.id);
@@ -86,5 +106,6 @@ module.exports = {
     create,
     update,
     get, 
-    destroy
+    destroy,
+    getAll
 };

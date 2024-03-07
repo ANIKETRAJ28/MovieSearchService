@@ -2,6 +2,26 @@ const { MovieService } = require("../services/index");
 
 const movieService = new MovieService();
 
+const getAll = async (req, res) => {
+    try {
+        const response = await movieService.getAll();
+        return res.status(201).json({
+            data: response,
+            message: "Successfully fetched movies",
+            success: true,
+            err: {}
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            message: "Failed to fetch movies",
+            success: false,
+            err: error
+        });
+    }
+}
+
 const get = async (req, res) => {
     try {
         const response = await movieService.get(req.params.id);
@@ -85,6 +105,7 @@ const update = async (req, res) => {
 module.exports = {
     create,
     update,
-    get, 
-    destroy
+    get,
+    destroy,
+    getAll
 };

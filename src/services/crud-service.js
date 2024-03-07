@@ -3,6 +3,16 @@ class CrudService {
         this.repository = repository;
     }
 
+    async getAll() {
+        try {
+            const response = await this.repository.getAll();
+            return response;
+        } catch (error) {
+            console.log("Something went wrong in repository layer");
+            throw error;
+        }
+    }
+
     async create(data) {
         try {
             const response = this.repository.create(data);
