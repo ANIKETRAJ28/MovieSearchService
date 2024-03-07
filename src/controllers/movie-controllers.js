@@ -4,7 +4,7 @@ const movieService = new MovieService();
 
 const getAll = async (req, res) => {
     try {
-        const response = await movieService.getAll();
+        const response = await movieService.getAll(req.body);
         return res.status(201).json({
             data: response,
             message: "Successfully fetched movies",

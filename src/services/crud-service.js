@@ -3,9 +3,9 @@ class CrudService {
         this.repository = repository;
     }
 
-    async getAll() {
+    async getAll(filter) {
         try {
-            const response = await this.repository.getAll();
+            const response = await this.repository.getAll(filter);
             return response;
         } catch (error) {
             console.log("Something went wrong in repository layer");

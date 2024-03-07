@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const { Movie, Theater, Language } = require("../models/index");
 const CrudRepository = require("./crud-repository");
 
@@ -20,6 +21,24 @@ class MovieRepository extends CrudRepository {
                     }
                 ]
             });
+            return response;
+        } catch (error) {
+            console.log("Something went wrong in repository layer");
+            throw error;
+        }
+    }
+
+    async getAll(filter) {
+        try {
+            if(filter.name) {
+                var response = Movie.findAll({
+                    where: {
+                        name: {[Op.like]: `${filter.name}%`}
+                    }
+                })
+            } else {
+                var response = super.getAll();
+            }
             return response;
         } catch (error) {
             console.log("Something went wrong in repository layer");

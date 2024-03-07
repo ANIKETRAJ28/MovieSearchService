@@ -4,7 +4,7 @@ const theaterService = new TheaterService();
 
 const getAll = async (req, res) => {
     try {
-        const response = await theaterService.getAll();
+        const response = await theaterService.getAll(req.body);
         return res.status(201).json({
             data: response,
             message: "Successfully fetched theaters",
