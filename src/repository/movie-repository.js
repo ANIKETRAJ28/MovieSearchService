@@ -1,9 +1,26 @@
-const { Movie } = require("../models/index");
+const { Movie, Theater } = require("../models/index");
 const CrudRepository = require("./crud-repository");
 
 class MovieRepository extends CrudRepository {
     constructor() {
         super(Movie);
+    }
+    async get(id) {
+        try {
+            const response = await Movie.findOne({
+                where: {id},
+                include: [
+                    {
+                        model: Theater,
+                        as: "theater"
+                    }
+                ]
+            });
+            return response;
+        } catch (error) {
+            console.log("Something went wrong in repository layer");
+            throw error;
+        }
     }
 }
 
