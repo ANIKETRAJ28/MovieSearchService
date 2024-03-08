@@ -26,4 +26,4 @@ MOVIE n:m THEATER
 ```
 MOVIE n:m LANGUAGE
 ```  
-![alt](./assets//movie-search.jpeg)
+![alt](./assets//movie-search.png)
