@@ -1,19 +1,19 @@
 const { MovieService } = require("../services/index");
+const { StatusCodes } = require("http-status-codes");
 
 const movieService = new MovieService();
 
 const getAll = async (req, res) => {
     try {
         const response = await movieService.getAll(req.body);
-        return res.status(201).json({
+        return res.status(StatusCodes.OK).json({
             data: response,
             message: "Successfully fetched movies",
             success: true,
             err: {}
         });
     } catch (error) {
-        console.log(error);
-        return res.status(500).json({
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             data: {},
             message: "Failed to fetch movies",
             success: false,
@@ -25,15 +25,14 @@ const getAll = async (req, res) => {
 const get = async (req, res) => {
     try {
         const response = await movieService.get(req.params.id);
-        return res.status(201).json({
+        return res.status(StatusCodes.OK).json({
             data: response,
             message: "Successfully fetched the movie",
             success: true,
             err: {}
         });
     } catch (error) {
-        console.log(error);
-        return res.status(500).json({
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             data: {},
             message: "Failed to fetch the movie",
             success: false,
@@ -44,16 +43,21 @@ const get = async (req, res) => {
 
 const create = async (req, res) => {
     try {
-        const response = await movieService.create(req.body);
-        return res.status(201).json({
+        const reqBody = {
+            name: req.body.name,
+            duration: req.body.duration,
+            price: req.body.price,
+            ratings: req.body.ratings
+        }
+        const response = await movieService.create(reqBody);
+        return res.status(StatusCodes.CREATED).json({
             data: response,
             message: "Successfully created the movie",
             success: true,
             err: {}
         });
     } catch (error) {
-        console.log(error);
-        return res.status(500).json({
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             data: {},
             message: "Failed to created the movie",
             success: false,
@@ -65,15 +69,14 @@ const create = async (req, res) => {
 const destroy = async (req, res) => {
     try {
         const response = await movieService.destroy(req.params.id);
-        return res.status(201).json({
+        return res.status(StatusCodes.OK).json({
             data: response,
             message: "Successfully deleted the movie",
             success: true,
             err: {}
         });
     } catch (error) {
-        console.log(error);
-        return res.status(500).json({
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             data: {},
             message: "Failed to delete the movie",
             success: false,
@@ -92,8 +95,7 @@ const update = async (req, res) => {
             err: {}
         });
     } catch (error) {
-        console.log(error);
-        return res.status(500).json({
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             data: {},
             message: "Failed to update the movie",
             success: false,

@@ -27,7 +27,6 @@ class TheaterRepository extends CrudRepository {
 
     async getAll(filter) {
         try {
-            console.log(filter);
             if(filter.name) {
                 var response = Theater.findAll({
                     where: {
